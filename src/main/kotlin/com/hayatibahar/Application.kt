@@ -1,6 +1,10 @@
 package com.hayatibahar
 
-import com.hayatibahar.plugins.*
+import com.hayatibahar.models.TicTacToeGame
+import com.hayatibahar.plugins.configureMonitoring
+import com.hayatibahar.plugins.configureRouting
+import com.hayatibahar.plugins.configureSerialization
+import com.hayatibahar.plugins.configureSockets
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -11,8 +15,9 @@ fun main() {
 }
 
 fun Application.module() {
+    val game = TicTacToeGame()
     configureSockets()
     configureSerialization()
     configureMonitoring()
-    configureRouting()
+    configureRouting(game)
 }
